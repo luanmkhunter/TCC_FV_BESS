@@ -46,11 +46,6 @@ gerar_curvas_IV             % curvas I-V e P-V e ponto de máxima potência em S
 balanco_anual               % balanço anual dos dois cenários e indicadores
 ```
 
-Em Python:
-
-```bash
-python balanco_anual.py
-```
 
 As figuras são gravadas na pasta `figuras/`.
 
@@ -63,29 +58,3 @@ TABELA 04 e os pontos de equilíbrio da Seção 5.4 são reproduzidos exatamente
 ligeiramente dos publicados. A redução de pico usa o máximo anual da demanda líquida, métrica
 sensível a esse ruído.
 
-## Resultados de referência (TABELA 04 do TCC)
-
-| Indicador | Residencial (5 kWp + 10 kWh) | Industrial (100 kWp + 200 kWh) |
-|---|---|---|
-| Geração FV total | 8.559 kWh/ano | 171.183 kWh/ano |
-| Autoconsumo (sem BESS) | 65,0% (34,8%) | 98,3% (93,2%) |
-| Autossuficiência (sem BESS) | 73,5% (40,9%) | 52,7% (50,1%) |
-| Redução de pico | 7,7% | 0,0% |
-| *Payback* simples | 7,7 anos | 8,3 anos |
-| VPL (25 anos) | −R$ 2.170,81 | −R$ 188.965,38 |
-| TIR | 9,3% | 8,0% |
-| LCOE | R$ 0,80/kWh | R$ 0,79/kWh |
-
-Pontos de equilíbrio (VPL = 0, Seção 5.4): tarifa de R$ 1,00/kWh, taxa de desconto de 9,3% a.a. ou
-CAPEX do BESS de R$ 2.646/kWh no cenário residencial; R$ 0,80/kWh, 8,0% a.a. ou R$ 1.813/kWh no
-industrial.
-
-## Como citar
-
-HOLANDA, L. M. S. **TCC_FV_BESS**: modelo MATLAB/Simulink e rotinas de simulação de sistemas
-fotovoltaicos com armazenamento em baterias. [S. l.]: GitHub, 2026. Disponível em:
-https://github.com/luanmkhunter/TCC_FV_BESS.
-
-## Licença
-
-Distribuído sob a licença MIT (arquivo `LICENSE`).
