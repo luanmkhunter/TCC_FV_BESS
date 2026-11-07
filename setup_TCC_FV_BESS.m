@@ -47,7 +47,8 @@ end
 params.cenario = lower(cenario);
 
 %% -------------------------------------------------- módulo FV (um diodo)
-% Módulo de referência ~330 Wp (72 células) — Villalva et al. (2009)
+% Módulo de referência de 60 células: Pmáx ≈ 237 W em STC (gerar_curvas_IV)
+% Modelo de um diodo: Villalva et al. (2009)
 params.Isc = 8.5;          % corrente de curto-circuito STC [A]
 params.Voc = 38.0;         % tensão de circuito aberto STC [V]
 params.Ki  = 0.005;        % coef. térmico de Isc [A/°C]
@@ -85,7 +86,7 @@ G = 1000*sin(pi*(h-6)/12);
 G(h<6 | h>18) = 0;
 G = max(G + 20*randn(size(G)).*(G>0), 0);
 
-% Temperatura ambiente: mínimo 14 °C às 5h, máximo 30 °C às 15h
+% Temperatura ambiente: mínimo 14 °C às 3h, máximo 30 °C às 15h
 T = 22 + 8*sin(pi*(h-9)/12);
 T = max(min(T,45),10);
 

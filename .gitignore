@@ -1,0 +1,16 @@
+# Arquivos temporários, de cache e de geração de código do MATLAB/Simulink
+*.asv
+*.m~
+*.autosave
+*.slxc
+*.mex*
+slprj/
+sccprj/
+codegen/
+*.slx.r20*
+*.mdl.r20*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

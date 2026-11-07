@@ -2,7 +2,7 @@ function Vref = mppt_PO(V, I) %#codegen
 %MPPT_PO  Rastreamento do ponto de máxima potência — Perturba & Observa.
 %   Vref = mppt_PO(V,I)
 %
-%   Implementa o fluxograma da FIGURA 09 do TCC: a cada período de
+%   Implementa o fluxograma da FIGURA 07 do TCC: a cada período de
 %   amostragem (Ts = 10 ms, imposto por bloco Rate Transition no
 %   Simulink) a tensão de referência é perturbada em dV = 0,5 V e o
 %   sinal da variação de potência define o sentido da próxima

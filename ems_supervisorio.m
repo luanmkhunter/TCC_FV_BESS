@@ -3,7 +3,7 @@ function [P_bat_ref, estado] = ems_supervisorio(P_fv, P_load, SOC, falha_bms, pa
 %   [P_bat_ref, estado] = ems_supervisorio(P_fv, P_load, SOC, falha_bms, params)
 %
 %   Equivalente em MATLAB Function do chart Stateflow EMS_Controller
-%   (FIGURA 10 do TCC), com cinco estados:
+%   (FIGURA 08 do TCC), com cinco estados:
 %     1 = CARGA_BESS    P_FV > P_carga  e  SOC < SOC_max
 %     2 = DESCARGA_BESS P_FV < P_carga  e  SOC > SOC_min
 %     3 = EXPORTACAO    SOC >= SOC_max  e  excedente FV

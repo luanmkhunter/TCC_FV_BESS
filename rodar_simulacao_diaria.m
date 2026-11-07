@@ -1,13 +1,13 @@
 %% rodar_simulacao_diaria.m
 % Executa o modelo Simulink por 24 h (86.400 s) e plota a operação
-% diária do sistema no formato da FIGURA 12/16 do TCC.
+% diária do sistema (potências e SOC).
 %
 % Funciona com:
 %   TCC_FV_BESS_R2023.slx  — criado por montar_modelo_TCC (R2020a+)
 %   TCC_FV_BESS.slx        — original (requer R2025b ou superior)
 %
 % Uso:
-%   >> cd codigos_matlab
+%   >> cd TCC_FV_BESS             % pasta do repositório
 %   >> cenario = 'residencial';   % ou 'industrial'
 %   >> rodar_simulacao_diaria
 
@@ -68,8 +68,8 @@ yline(20,':r','SOC_{min}'); yline(90,':g','SOC_{max}');
 ylim([0 100]); xlim([0 24]);
 ylabel('SOC [%]'); xlabel('Hora do dia');
 
-if ~exist('../figuras','dir'), mkdir('../figuras'); end
-exportgraphics(gcf, sprintf('../figuras/fig_operacao_diaria_%s.png', ...
+if ~exist('figuras','dir'), mkdir('figuras'); end
+exportgraphics(gcf, sprintf('figuras/fig_operacao_diaria_%s.png', ...
                cenario), 'Resolution', 300);
 fprintf(['Figura salva em figuras/. Para os indicadores anuais ' ...
-         '(TABELA 05):\n   >> balanco_anual\n']);
+         '(TABELA 04):\n   >> balanco_anual\n']);

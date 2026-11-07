@@ -1,17 +1,18 @@
 %% balanco_anual.m
 % Simulador de balanço energético horário (8.760 h) — TCC FV+BESS
-% Reproduz os indicadores técnicos e econômicos da TABELA 05 do TCC e
-% gera as figuras do Capítulo 4 (operação diária, balanço mensal e
-% fluxo de caixa acumulado) para os dois cenários.
+% Reproduz os indicadores técnicos e econômicos da TABELA 04 do TCC e
+% gera figuras auxiliares (operação diária, balanço mensal e fluxo de
+% caixa acumulado) para os dois cenários.
 %
 % Uso:
 %   >> balanco_anual
 %
 % Notas:
-% - Mesmas equações das Seções 3.3.3 a 3.3.10 do TCC, em passo horário.
+% - Mesmas equações das Seções 3.3.1 e 3.3.4 a 3.3.10 do TCC, em passo horário.
 % - rng(42) fixa o ruído gaussiano: resultados determinísticos.
-% - Pequenas diferenças (<1-2%) em relação aos valores publicados podem
-%   ocorrer entre versões do MATLAB (gerador de números aleatórios).
+% - Os valores da TABELA 04 são reproduzidos exatamente por balanco_anual.py
+%   (NumPy, semente 42). No MATLAB, o randn gera outra sequência
+%   pseudoaleatória, e os indicadores podem diferir ligeiramente.
 
 clear; clc; close all;
 
@@ -93,7 +94,7 @@ for ic = 1:2
     end
     P_ld = max(P_ld, 0);
 
-    %% ------------------------------------ despacho EMS + SOC (Eq. 3/9)
+    %% ------------------------------------ despacho EMS + SOC (Eqs. 13 e 16-20)
     SOC   = zeros(Nh+1,1);  SOC(1) = 0.50;
     P_c   = zeros(Nh,1);  P_d = zeros(Nh,1);
     P_imp = zeros(Nh,1);  P_exp = zeros(Nh,1);
@@ -125,14 +126,14 @@ for ic = 1:2
 
     I_auto    = (E_fv - E_exp) / E_fv * 100;         % Seção 3.3.7
     I_autosuf = (E_ld - E_imp) / E_ld * 100;         % Seção 3.3.8
-    eta_glob  = (E_ld - E_imp) / E_fv * 100;         % Eq. 24 (Seção 3.3.6)
+    eta_glob  = (E_ld - E_imp) / E_fv * 100;         % Eq. 21 (Seção 3.3.6)
 
-    % Peak shaving (Seção 3.3.9) — pico médio mensal de demanda
+    % Peak shaving (Seção 3.3.9, Eq. 24) — pico anual da demanda líquida
     P_liq_sem = max(P_ld - P_fv, 0);                 % sem BESS (com FV)
     P_liq_com = P_imp;                                % com BESS
     mes = min(floor((dia - 1)/30.4167) + 1, 12);
     pico_sem = max(P_liq_sem);   % máximo anual de demanda líquida
-    pico_com = max(P_liq_com);   % (métrica sensível a ruído — ver LEIA-ME)
+    pico_com = max(P_liq_com);   % (métrica sensível a ruído — ver README)
     red_pico = (pico_sem - pico_com)/pico_sem * 100;
 
     % Referência SEM armazenamento (para H1)
