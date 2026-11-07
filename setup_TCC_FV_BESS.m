@@ -118,7 +118,7 @@ assignin('base','P_load_ts',P_load_ts);
 %% ------------------------------------------------------------- solver
 % Configura o solver do modelo que estiver disponível/carregado.
 % - TCC_FV_BESS_R2023 (fluxo de potência): MaxStep 60 s
-% - TCC_FV_BESS (original R2025b):         MaxStep 1e-4 s
+% - TCC_FV_BESS (variante chaveada):       MaxStep 1e-4 s
 for mdl_ = {'TCC_FV_BESS_R2023','TCC_FV_BESS'}
     mdl = mdl_{1};
     if bdIsLoaded(mdl) || exist([mdl '.slx'],'file') || exist(['../' mdl '.slx'],'file')

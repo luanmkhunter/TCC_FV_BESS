@@ -1,13 +1,11 @@
 %% montar_modelo_TCC.m
 % Constrói programaticamente o modelo Simulink TCC_FV_BESS_R2023.slx
 % (modelo de fluxo de potência, 24 h) — compatível com MATLAB/Simulink
-% R2020a ou superior (testado para R2023a/R2023b).
+% R2020a ou superior; o projeto foi desenvolvido no R2023b.
 %
-% Por que este script existe: o arquivo TCC_FV_BESS.slx original foi
-% salvo no R2025b e NÃO abre em versões anteriores do Simulink. Este
-% script recria o mesmo modelo (FIGURA 04 do TCC) inteiramente por
-% comandos add_block/add_line, de modo que funciona em qualquer
-% instalação R2020a+ apenas com o Simulink base (sem Simscape).
+% O script recria o modelo (FIGURA 04 do TCC) inteiramente por comandos
+% add_block/add_line, de modo que funciona em qualquer instalação
+% R2020a+ apenas com o Simulink base (sem Simscape).
 %
 % Uso:
 %   >> cd TCC_FV_BESS                % pasta do repositório

@@ -12,12 +12,14 @@ O trabalho compara, com e sem baterias, um sistema residencial (5 kWp + 10 kWh) 
 (100 kWp + 200 kWh) em Conselheiro Lafaiete – MG, por indicadores técnicos (eficiência global,
 autoconsumo, autossuficiência e redução de pico) e econômicos (*payback*, VPL, TIR e LCOE).
 
+Projeto desenvolvido no **MATLAB/Simulink R2023b**.
+
 ## Arquivos
 
 | Arquivo | Função | Seção do TCC |
 |---|---|---|
 | `setup_TCC_FV_BESS.m` | Parâmetros dos cenários, perfis de 24 h (passo de 60 s) e configuração do *solver* | 3.5.1 e 4.2 |
-| `TCC_FV_BESS_R2023.slx` | Modelo Simulink de 24 h (SolarPlant, BoostConverter, EMS_Controller, BESS e Inverter), compatível com MATLAB R2020a ou superior; o modelo original, `TCC_FV_BESS.slx`, foi salvo no R2025b | 3.5.1 |
+| `TCC_FV_BESS_R2023.slx` | Modelo Simulink de 24 h (SolarPlant, BoostConverter, EMS_Controller, BESS e Inverter), salvo no MATLAB R2023b | 3.5.1 |
 | `montar_modelo_TCC.m` | Recria o `TCC_FV_BESS_R2023.slx` por comandos (`add_block`/`add_line`) | 3.5.1 |
 | `rodar_simulacao_diaria.m` | Simula 24 h e plota as potências e o SOC | 3.5 |
 | `balanco_anual.m` | Balanço energético horário anual (8.760 h) e indicadores técnicos e econômicos | 3.3.4 a 3.3.10 e 3.5 |
@@ -31,7 +33,8 @@ autoconsumo, autossuficiência e redução de pico) e econômicos (*payback*, VP
 
 ## Requisitos
 
-- **MATLAB R2020a ou superior com Simulink**, para as rotinas `.m` e o `TCC_FV_BESS_R2023.slx`.
+- **MATLAB/Simulink R2023b**, versão em que o projeto foi desenvolvido, para as rotinas `.m` e o
+  `TCC_FV_BESS_R2023.slx`; o `montar_modelo_TCC.m` recria o modelo em versões a partir da R2020a.
 - **Python 3.9 ou superior com NumPy**, para `balanco_anual.py` (o `openpyxl` é opcional e serve
   apenas para gravar a planilha).
 
@@ -45,7 +48,6 @@ rodar_simulacao_diaria      % carrega setup_TCC_FV_BESS e simula 24 h
 gerar_curvas_IV             % curvas I-V e P-V e ponto de máxima potência em STC
 balanco_anual               % balanço anual dos dois cenários e indicadores
 ```
-
 
 As figuras são gravadas na pasta `figuras/`.
 

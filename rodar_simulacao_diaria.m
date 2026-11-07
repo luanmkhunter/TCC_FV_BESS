@@ -4,7 +4,7 @@
 %
 % Funciona com:
 %   TCC_FV_BESS_R2023.slx  — criado por montar_modelo_TCC (R2020a+)
-%   TCC_FV_BESS.slx        — original (requer R2025b ou superior)
+%   TCC_FV_BESS.slx        — variante chaveada, se estiver na pasta
 %
 % Uso:
 %   >> cd TCC_FV_BESS             % pasta do repositório
